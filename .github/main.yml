@@ -1,0 +1,47 @@
+name: U-Ask QA Automation CI (uv)
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+          cache-dependency-glob: "uv.lock"
+
+      - name: Set up Python
+        run: uv python install 3.11
+
+      - name: Install dependencies
+        run: |
+          uv sync --frozen
+          uv run playwright install --with-deps chromium
+
+      - name: Run Smoke Tests
+        env:
+          BASE_URL: ${{ secrets.BASE_URL || 'https://u.ae/en/u-ask' }}
+          BASE_URL_AR: ${{ secrets.BASE_URL_AR || 'https://u.ae/ar/u-ask' }}
+          HEADLESS: true
+          TEST_LANGUAGE: en
+        run: |
+          uv run pytest -m smoke --html=reports/report.html --self-contained-html
+
+      - name: Upload Test Results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: qa-automation-reports
+          path: |
+            reports/
+            screenshots/
