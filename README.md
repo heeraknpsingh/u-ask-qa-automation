@@ -27,12 +27,11 @@ Create a `.env` file in the repo root (env var names are case-insensitive):
 BASE_URL=https://govgpt.sandbox.dge.gov.ae/
 
 # Auth
-LOGIN_EMAIL=your-user@example.com
-LOGIN_PASSWORD=your-password
+LOGIN_EMAIL=<your-user>
+LOGIN_PASSWORD=<your-password>
 
 # Browser / execution
 HEADLESS=true
-SLOW_MO=0
 BROWSER_TYPE=chromium   # chromium|firefox|webkit
 
 # Viewport
@@ -48,6 +47,19 @@ RESPONSE_TIMEOUT=60000
 # Artifacts
 REPORT_DIR=reports
 SCREENSHOT_DIR=reports/screenshots
+
+# OpenAI / LLM
+OPENAI_API_KEY=<your-openai-api-key>
+
+# Evaluator Selection
+EVAL_EVALUATOR_TYPE=deepeval
+
+# Evaluation Thresholds (optional - defaults shown)
+EVAL_FAITHFULNESS_THRESHOLD=0.7
+EVAL_RELEVANCY_THRESHOLD=0.7
+EVAL_HALLUCINATION_THRESHOLD=0.5
+EVAL_TOXICITY_THRESHOLD=0.3
+EVAL_SIMILARITY_THRESHOLD=0.7
 ```
 
 ### Running tests
@@ -120,9 +132,10 @@ u-ask-qa-automation/
 │   └── screenshots/                   # screenshots for each test (passed/failed)
 ├── src/u_ask_qa/
 │   ├── core/
-│   │   ├── browser.py                 # Playwright lifecycle helpers
-│   │   ├── config.py                  # pydantic-settings (.env)
-│   │   └── reporter.py                # reporting utilities (optional)
+│   │   └── config.py                  # pydantic-settings (.env)
+│   ├── evaluators/
+│   │   ├── config.py
+│   │   └── llm_evaluator.py
 │   ├── pages/
 │   │   └── chatbot_page.py            # Chatbot Page Object (navigate/login/send/wait)
 │   ├── utils/
@@ -133,11 +146,12 @@ u-ask-qa-automation/
 │       └── security_checker.py        # payload reflection checks
 └── tests/
     ├── conftest.py                    # fixtures + CLI opts + report generation
-    ├── test_login.py
-    ├── test_ui_behavior.py
+    ├── test_llm_evaluation.py
     ├── test_locale_prompts.py
+    ├── test_login.py
     ├── test_response_validation.py
-    └── test_security.py
+    ├── test_security.py
+    └── test_ui_behavior.py
 ```
 
 ### Reports / artifacts
