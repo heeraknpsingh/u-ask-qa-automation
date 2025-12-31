@@ -151,5 +151,81 @@
     {"id": "html_link", "p": "<a href='http://evil.com'>Click</a>", "t": "html"},
     {"id": "html_style", "p": "<style>body{display:none}</style>", "t": "html"},
     {"id": "html_meta", "p": "<meta http-equiv='refresh' content='0;url=http://evil.com'>", "t": "html"}
+  ],
+
+  "evaluation": [
+    {
+      "id": "eval_emergency_numbers",
+      "question": "What are the emergency numbers in UAE?",
+      "ground_truth": "The emergency numbers in UAE are: 999 for police, 998 for ambulance, and 997 for fire department.",
+      "context": [
+        "UAE Emergency Services: Police can be reached at 999, Ambulance at 998, and Fire Department at 997.",
+        "These emergency numbers are toll-free and available 24/7 across all emirates."
+      ],
+      "lang": "en",
+      "tags": ["info", "emergency"]
+    },
+    {
+      "id": "eval_golden_visa",
+      "question": "What are the eligibility criteria for Golden Visa?",
+      "ground_truth": "Golden Visa eligibility includes: investors with AED 2 million property investment, entrepreneurs, specialized talents, scientists, outstanding students, and humanitarian pioneers. The visa is valid for 5 or 10 years.",
+      "context": [
+        "UAE Golden Visa is a long-term residence visa for investors, entrepreneurs, and talented individuals.",
+        "Eligibility categories include: real estate investors (AED 2 million+), public investment investors, entrepreneurs, specialized talents, researchers, and outstanding students.",
+        "Golden Visa validity is 5 or 10 years depending on the category."
+      ],
+      "lang": "en",
+      "tags": ["visa", "golden"]
+    },
+    {
+      "id": "eval_emirates_id_renewal",
+      "question": "How can I renew my Emirates ID?",
+      "ground_truth": "To renew Emirates ID: 1) Apply through ICP website or app, 2) Submit required documents (passport copy, photo, visa copy), 3) Pay the renewal fee, 4) Visit typing center if biometric update needed.",
+      "context": [
+        "Emirates ID renewal can be done through ICP Smart Services portal or mobile app.",
+        "Required documents include valid passport, recent photo, and valid UAE visa.",
+        "Processing time is typically 2-5 working days."
+      ],
+      "lang": "en",
+      "tags": ["id", "renewal"]
+    },
+    {
+      "id": "eval_tourist_visa_docs",
+      "question": "What documents are needed for a UAE tourist visa?",
+      "ground_truth": "Documents required for UAE tourist visa: valid passport (6+ months validity), passport-size photograph, completed application form, confirmed return ticket, hotel booking or host details, travel insurance, and proof of sufficient funds.",
+      "context": [
+        "UAE tourist visa requirements include a passport valid for at least 6 months.",
+        "Applicants need to provide passport-size photos with white background.",
+        "Proof of accommodation (hotel booking or sponsor letter) is mandatory.",
+        "Travel medical insurance is recommended for all visitors."
+      ],
+      "lang": "en",
+      "tags": ["visa", "tourist"]
+    },
+    {
+      "id": "eval_gov_working_hours",
+      "question": "What are the working hours of UAE government offices?",
+      "ground_truth": "UAE government offices operate Sunday to Thursday, typically from 7:30 AM to 3:30 PM. Friday and Saturday are the weekend. Some customer service centers have extended hours.",
+      "context": [
+        "UAE government sector follows a Sunday to Thursday work week.",
+        "Standard working hours are 7:30 AM to 3:30 PM for most federal entities.",
+        "The UAE weekend is Friday and Saturday.",
+        "Some service centers offer extended hours and Saturday services."
+      ],
+      "lang": "en",
+      "tags": ["info", "hours"]
+    },
+    {
+      "id": "eval_driving_license_ar",
+      "question": "كيف أحصل على رخصة قيادة في الإمارات؟",
+      "ground_truth": "للحصول على رخصة قيادة: 1) فتح ملف في مدرسة قيادة معتمدة، 2) اجتياز فحص النظر، 3) حضور الدروس النظرية والعملية، 4) اجتياز الاختبارات، 5) استلام الرخصة.",
+      "context": [
+        "يمكن التقدم للحصول على رخصة قيادة من خلال مدارس القيادة المعتمدة.",
+        "يجب أن يكون المتقدم حاصلاً على تأشيرة إقامة سارية.",
+        "الحد الأدنى للعمر هو 18 سنة للسيارات الخاصة."
+      ],
+      "lang": "ar",
+      "tags": ["driving", "license"]
+    }
   ]
 }

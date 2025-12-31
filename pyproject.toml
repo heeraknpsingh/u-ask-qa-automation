@@ -13,12 +13,55 @@ dependencies = [
     "pydantic-settings>=2.1.0",
     "python-Levenshtein>=0.25.0",
     "langdetect>=1.0.9",
+    "ragas>=0.4.2",
+    "deepeval>=3.7.6",
+    "sentence-transformers>=5.2.0",
 ]
 
 [project.optional-dependencies]
 reporting = [
     "pytest-html>=4.1.0",
     "rich>=13.7.0",
+]
+
+# LLM Evaluation dependencies
+eval = [
+    "ragas>=0.1.0",
+    "deepeval>=0.21.0",
+    "sentence-transformers>=2.2.0",
+    "transformers>=4.30.0",
+    "datasets>=2.14.0",
+    "openai>=1.0.0",
+]
+
+# Individual evaluation backends (for selective installation)
+eval-ragas = [
+    "ragas>=0.1.0",
+    "datasets>=2.14.0",
+    "openai>=1.0.0",
+]
+
+eval-deepeval = [
+    "deepeval>=0.21.0",
+    "openai>=1.0.0",
+]
+
+eval-huggingface = [
+    "sentence-transformers>=2.2.0",
+    "transformers>=4.30.0",
+    "torch>=2.0.0",
+]
+
+# All extras combined
+all = [
+    "pytest-html>=4.1.0",
+    "rich>=13.7.0",
+    "ragas>=0.1.0",
+    "deepeval>=0.21.0",
+    "sentence-transformers>=2.2.0",
+    "transformers>=4.30.0",
+    "datasets>=2.14.0",
+    "openai>=1.0.0",
 ]
 
 [build-system]
@@ -36,6 +79,10 @@ python_files = ["test_*.py"]
 python_classes = ["Test*"]
 python_functions = ["test_*"]
 addopts = ["-v", "--tb=short"]
+log_cli = true
+log_cli_level = "INFO"
+log_cli_format = "%(asctime)s | %(levelname)s | %(message)s"
+log_cli_date_format = "%H:%M:%S"
 markers = [
     "ui: UI behavior tests",
     "response: GPT response validation tests",
@@ -46,6 +93,7 @@ markers = [
     "mobile: Mobile viewport tests",
     "desktop: Desktop viewport tests",
     "login: Login tests",
+    "llm_eval: LLM evaluation tests (requires eval extras)",
 ]
 
 [dependency-groups]
